@@ -94,8 +94,10 @@ public class Bubble : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (Available) return;
-        if (other.CompareTag("Window"))
+        if (other.CompareTag("Point"))
         {
+            GameObject outBubble = Instantiate(gameObject,transform.position,Quaternion.identity);
+            outBubble.GetComponent<Rigidbody2D>().gravityScale = -1;
             DestroyBubble();
             GameManager.instance.AddPoint();
             return;
