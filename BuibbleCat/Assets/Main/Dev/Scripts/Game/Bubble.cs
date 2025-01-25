@@ -4,6 +4,7 @@ using UnityEngine;
 public class Bubble : MonoBehaviour
 {
     [HideInInspector] public bool available = true;
+    [SerializeField] public float bounceForce = 8f;
     public bool Available
     {
         get { return available; }
@@ -96,12 +97,19 @@ public class Bubble : MonoBehaviour
         if (Available) return;
         if (other.CompareTag("Point"))
         {
-            GameObject outBubble = Instantiate(gameObject,transform.position,Quaternion.identity);
+            GameObject outBubble = Instantiate(gameObject, transform.position, Quaternion.identity);
             outBubble.GetComponent<Rigidbody2D>().gravityScale = -1;
             DestroyBubble();
             GameManager.instance.AddPoint();
             return;
         }
+        else if (other.CompareTag("RightEdge"))
+        {
+            Vector2 bounceDirection = Vector2.left;
+            rb.AddForce(bounceDirection * bounceForce, ForceMode2D.Impulse);
+            return;
+        }
+
         if (isInvulnerable || other.CompareTag("bubbleSafe")) return;
 
         DestroyBubble();
