@@ -112,17 +112,14 @@ public class Bubble : MonoBehaviour
             GameManager.instance.AddPoint();
             return;
         }
-        if (other.CompareTag("RightEdge"))
+        else if (other.CompareTag("RightEdge"))
         {
             Vector2 bounceDirection = Vector2.left;
             rb.AddForce(bounceDirection * bounceForce, ForceMode2D.Impulse);
-            return;
-        }
-        if (other.CompareTag("LeftEdge"))
+        }else if (other.CompareTag("LeftEdge"))
         {
             Vector2 bounceDirection = Vector2.right;
             rb.AddForce(bounceDirection * bounceForce, ForceMode2D.Impulse);
-            return;
         }
 
         if (isInvulnerable || other.CompareTag("bubbleSafe")) return;

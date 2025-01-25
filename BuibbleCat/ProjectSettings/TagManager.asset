@@ -8,6 +8,9 @@ TagManager:
   - Window
   - BottomEdge
   - Point
+  - LeftEdge
+  - RightEdge
+  - TopEdge
   layers:
   - Default
   - TransparentFX
