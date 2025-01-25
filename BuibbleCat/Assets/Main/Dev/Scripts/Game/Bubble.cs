@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -24,12 +23,14 @@ public class Bubble : MonoBehaviour
     }
     [SerializeField] GameObject spriteObj;
     [SerializeField] float lerpTimeOnHitDirt, invulnerabilityTimeOnHitDirt;
+    SoundsSender soundsSender;
     Rigidbody2D rb;
     bool isInvulnerable;
     Dirt containedDirt;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        soundsSender = GetComponent<SoundsSender>();
     }
 
     private void Start()
@@ -40,6 +41,7 @@ public class Bubble : MonoBehaviour
 
     public void ShootBubble(Vector2 pos, float force)
     {
+        PlayShootSound();
         Available = false;
         transform.position = pos;
         rb.linearVelocity = Vector2.zero;
@@ -48,13 +50,14 @@ public class Bubble : MonoBehaviour
 
     private void DestroyBubble()
     {
+        PlayPopSound();
         Available = true;
-
         if (containedDirt) containedDirt.EnableDirt();
     }
 
     public void CollisionWithDirt(Dirt dirt)
     {
+        PlayCapturedSound();
         containedDirt = dirt;
         dirt.DisableDirt(transform);
         StartCoroutine(HitDirt());
@@ -117,4 +120,8 @@ public class Bubble : MonoBehaviour
             rb.AddForce(new Vector2(dot, 1).normalized * force, ForceMode2D.Force);
         }
     }
+
+    void PlayPopSound() => soundsSender.Play("pop");
+    void PlayCapturedSound() => soundsSender.Play("captured");
+    void PlayShootSound() => soundsSender.Play("shoot");
 }

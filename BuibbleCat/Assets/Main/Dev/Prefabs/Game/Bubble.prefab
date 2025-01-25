@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 7063723794461611821}
   - component: {fileID: 2605323155887041831}
   - component: {fileID: 4675361720705025967}
+  - component: {fileID: 2978451141862129693}
   - component: {fileID: 856064382143522595}
   m_Layer: 8
   m_Name: Bubble
@@ -181,6 +182,34 @@ MonoBehaviour:
   spriteObj: {fileID: 2112725858166093505}
   lerpTimeOnHitDirt: 0.65
   invulnerabilityTimeOnHitDirt: 1
+  shootSound:
+  - {fileID: 8300000, guid: 7b61f0c2660796943bcc8176cb595705, type: 3}
+  capturedSound:
+  - {fileID: 8300000, guid: eedd6268b986f2f4e81f21fec9d2b388, type: 3}
+  popSound:
+  - {fileID: 8300000, guid: 7ee4fc6d174f3f349a5b54649eaba0d4, type: 3}
+--- !u!114 &2978451141862129693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4619050209466736664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d782213d0ad214946916e1d692af2d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundsToSend:
+  - id: shoot
+    clips:
+    - {fileID: 8300000, guid: 7b61f0c2660796943bcc8176cb595705, type: 3}
+  - id: captured
+    clips:
+    - {fileID: 8300000, guid: eedd6268b986f2f4e81f21fec9d2b388, type: 3}
+  - id: pop
+    clips:
+    - {fileID: 8300000, guid: 7ee4fc6d174f3f349a5b54649eaba0d4, type: 3}
 --- !u!58 &856064382143522595
 CircleCollider2D:
   m_ObjectHideFlags: 0

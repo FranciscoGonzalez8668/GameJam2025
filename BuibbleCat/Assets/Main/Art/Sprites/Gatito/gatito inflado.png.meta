@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 56d0e5c243688524a98e8d1ee522d005
+guid: bd692f82f5a797c4eaa01bce5b86d8f6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3949172808812792004
-    second: Gatito rascandose_0
+      213: 6820239972800281292
+    second: gatito inflado_0
+  - first:
+      213: -6974725374082580141
+    second: gatito inflado_1
+  - first:
+      213: -2140370731866577417
+    second: gatito inflado_2
+  - first:
+      213: -1811881617951418889
+    second: gatito inflado_3
+  - first:
+      213: -1356076662557352900
+    second: gatito inflado_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,43 +108,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gatito rascandose_0
+      name: gatito inflado_0
       rect:
         serializedVersion: 2
-        x: 34
-        y: 73
-        width: 468
-        height: 382
+        x: 42
+        y: 75
+        width: 447
+        height: 288
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +127,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c37f4160148b139c0800000000000000
-      internalID: -3949172808812792004
+      spriteID: cca3eadbe1c56ae50800000000000000
+      internalID: 6820239972800281292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gatito inflado_1
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 359
+        width: 154
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35187e7d93cc43f90800000000000000
+      internalID: -6974725374082580141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gatito inflado_2
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 389
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f52377d820eb42e0800000000000000
+      internalID: -2140370731866577417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gatito inflado_3
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 359
+        width: 57
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f512faa447ead6e0800000000000000
+      internalID: -1811881617951418889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gatito inflado_4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 82
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3c5210d57f3e2de0800000000000000
+      internalID: -1356076662557352900
       vertices: []
       indices: 
       edges: []
@@ -161,7 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Gatito rascandose_0: -3949172808812792004
+      gatito inflado_0: 6820239972800281292
+      gatito inflado_1: -6974725374082580141
+      gatito inflado_2: -2140370731866577417
+      gatito inflado_3: -1811881617951418889
+      gatito inflado_4: -1356076662557352900
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
