@@ -17,7 +17,7 @@ public class Dirt : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<Bubble>() != null)
+        if (other.TryGetComponent<Bubble>(out Bubble bubble))
         {
             //Reproducir Sonido colision
             if (audioSource != null && collisionBubbleClip != null)
@@ -25,14 +25,24 @@ public class Dirt : MonoBehaviour
                 audioSource.PlayOneShot(collisionBubbleClip);
             }
 
-            transform.position = other.transform.position;
-            transform.parent = other.transform;
-            rb.bodyType = RigidbodyType2D.Kinematic;
+            bubble.CollisionWithDirt(this);
         }
         else
         {
             Debug.Log("Dirt collision with: " + other.name);
         }
-        
+    }
+
+    public void EnableDirt()
+    {
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        transform.SetParent(null);
+    }
+
+    public void DisableDirt(Transform bubbleParent)
+    {
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        transform.position = bubbleParent.transform.position;
+        transform.parent = bubbleParent.transform;
     }
 }

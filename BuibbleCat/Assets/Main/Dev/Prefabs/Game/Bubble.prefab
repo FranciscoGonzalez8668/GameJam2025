@@ -197,3 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4719855be61a22346b7cc9b73826041f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  available: 1
+  spriteObj: {fileID: 2112725858166093505}
+  lerpTimeOnHitDirt: 0.65
+  invulnerabilityTimeOnHitDirt: 1
