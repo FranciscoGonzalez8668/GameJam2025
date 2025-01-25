@@ -10,8 +10,15 @@ public class HorizontalMovement : MonoBehaviour
 
     void Start()
     {
-
-        rb = GetComponent<Rigidbody2D>();
+        try
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
+        catch(System.Exception ex)
+        {
+            Debug.LogError("Error al obtener el componente Rigidbody2D: " + ex.Message);
+        }
+        
 
         if (rb != null)
         {
@@ -28,8 +35,11 @@ public class HorizontalMovement : MonoBehaviour
     {
 
         float movimientoHorizontal = Input.GetAxis("Horizontal");
-
-        Vector2 velocidadDeseada = new Vector2(movimientoHorizontal * velocidad, rb.linearVelocity.y);
+        //float movimientoVertical = Input.GetAxis("Vertical");
+        Vector2 velocidadDeseada = new Vector2(movimientoHorizontal * velocidad, rb.linearVelocityY);
+        
+        
+        rb.linearVelocity= velocidadDeseada;
 
         if (rb != null)
         {
