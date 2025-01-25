@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 56d0e5c243688524a98e8d1ee522d005
+guid: b6a341797fda307418f69fe2643c3fc4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3949172808812792004
-    second: Gatito rascandose_0
+      213: -8793355492797016989
+    second: Gatito rascandose 2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gatito rascandose_0
+      name: Gatito rascandose 2_0
       rect:
         serializedVersion: 2
         x: 34
         y: 73
         width: 468
-        height: 382
+        height: 383
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c37f4160148b139c0800000000000000
-      internalID: -3949172808812792004
+      spriteID: 3649a1cb4c9b7f580800000000000000
+      internalID: -8793355492797016989
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Gatito rascandose_0: -3949172808812792004
+      Gatito rascandose 2_0: -8793355492797016989
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -15,6 +15,10 @@ public class Dirt : MonoBehaviour
         rb.AddForce(direction * force, ForceMode2D.Impulse);
     }
 
+    private void Update()
+    {
+        if (transform.position.y < -25) DestroyDirt();
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.TryGetComponent<Bubble>(out Bubble bubble))
@@ -27,10 +31,10 @@ public class Dirt : MonoBehaviour
 
             bubble.CollisionWithDirt(this);
         }
-        else if (other.CompareTag("BottomEdge"))
+        if (other.CompareTag("BottomEdge"))
         {
             //Incrementar el contador en el GameManager
-            GameManager.instance.RestTry();
+            DestroyDirt();
         }
     }
 
@@ -45,5 +49,16 @@ public class Dirt : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Kinematic;
         transform.position = bubbleParent.transform.position;
         transform.parent = bubbleParent.transform;
+    }
+
+    public void DestroyDirt()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        DirtGenerator.CreateDirt.Invoke();
+        GameManager.instance.RestTry();
     }
 }
