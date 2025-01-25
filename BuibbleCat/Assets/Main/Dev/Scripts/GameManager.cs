@@ -7,9 +7,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] int tries;
     int points;
 
+    [Header("Audio Settings")]
+    [SerializeField] AudioSource ambientAudioSource;
+    [SerializeField] AudioClip ambientClip;
+
     private void Awake()
     {
         instance = this;
+
+        //Configuracion del audio ambiental
+        if (ambientAudioSource != null && ambientClip != null)
+        {
+            ambientAudioSource.clip = ambientClip;
+            ambientAudioSource.loop = true;
+            ambientAudioSource.Play();
+        }
     }
 
     public void AddPoint()
@@ -37,5 +49,14 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void SetAmbientVolume(float volume)
+    {
+        if (ambientAudioSource != null)
+        {
+            ambientAudioSource.volume = volume;
+        }
+
     }
 }

@@ -4,6 +4,8 @@ public class Dirt : MonoBehaviour
 {
     [SerializeField] float minForce, maxForce;
     [SerializeField] Vector2 direction;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip collisionBubbleClip;
     Rigidbody2D rb;
 
     private void Awake()
@@ -15,8 +17,22 @@ public class Dirt : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        transform.position = other.transform.position;
-        transform.parent = other.transform;
-        rb.bodyType = RigidbodyType2D.Kinematic;
+        if (other.GetComponent<Bubble>() != null)
+        {
+            //Reproducir Sonido colision
+            if (audioSource != null && collisionBubbleClip != null)
+            {
+                audioSource.PlayOneShot(collisionBubbleClip);
+            }
+
+            transform.position = other.transform.position;
+            transform.parent = other.transform;
+            rb.bodyType = RigidbodyType2D.Kinematic;
+        }
+        else
+        {
+            Debug.Log("Dirt collision with: " + other.name);
+        }
+        
     }
 }
