@@ -23,10 +23,16 @@ public class Bubble : MonoBehaviour
     }
     [SerializeField] GameObject spriteObj;
     [SerializeField] float lerpTimeOnHitDirt, invulnerabilityTimeOnHitDirt;
+    [SerializeField] SpriteSelector spriteSelector;
     SoundsSender soundsSender;
     Rigidbody2D rb;
     bool isInvulnerable;
     Dirt containedDirt;
+
+    public int GetSprite()
+    {
+        return spriteSelector.selectedSpriteInt;
+    }
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -94,14 +100,24 @@ public class Bubble : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (Available) return;
-        if (other.CompareTag("Point"))
+        if (other.CompareTag("Point") && containedDirt)
         {
-            GameObject outBubble = Instantiate(gameObject,transform.position,Quaternion.identity);
-            outBubble.GetComponent<Rigidbody2D>().gravityScale = -1;
+            FakeBubble fakeBubble = other.GetComponentInParent<FakeBubble>();
+            fakeBubble.GenerateFakeBubble(transform.position, GetSprite(), containedDirt.GetSprite());
+
+            Destroy(containedDirt.gameObject);
             DestroyBubble();
+
             GameManager.instance.AddPoint();
             return;
         }
+
+        if (other.CompareTag("Border"))
+        {
+            DestroyBubble();
+            return;
+        }
+
         if (isInvulnerable || other.CompareTag("bubbleSafe")) return;
 
         DestroyBubble();

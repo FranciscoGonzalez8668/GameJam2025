@@ -103,6 +103,9 @@ MonoBehaviour:
   sprites:
   - {fileID: 621864222053864608, guid: 3d05d50e9c6cbb74bbf43b2b95f38a77, type: 3}
   - {fileID: -1771903028895998087, guid: 9df8fa48cf7cd5b489d394676984d472, type: 3}
+  playOnAwake: 1
+  selectedSprite: {fileID: 0}
+  selectedSpriteInt: 0
 --- !u!1 &4619050209466736664
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +157,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0.2
   m_AngularDamping: 0.05
-  m_GravityScale: 0.2
+  m_GravityScale: 0.25
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -182,12 +185,7 @@ MonoBehaviour:
   spriteObj: {fileID: 2112725858166093505}
   lerpTimeOnHitDirt: 0.65
   invulnerabilityTimeOnHitDirt: 1
-  shootSound:
-  - {fileID: 8300000, guid: 7b61f0c2660796943bcc8176cb595705, type: 3}
-  capturedSound:
-  - {fileID: 8300000, guid: eedd6268b986f2f4e81f21fec9d2b388, type: 3}
-  popSound:
-  - {fileID: 8300000, guid: 7ee4fc6d174f3f349a5b54649eaba0d4, type: 3}
+  spriteSelector: {fileID: 4021162815648266623}
 --- !u!114 &2978451141862129693
 MonoBehaviour:
   m_ObjectHideFlags: 0
