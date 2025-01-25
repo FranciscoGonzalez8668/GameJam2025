@@ -258,6 +258,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8427855252795140360, guid: 09a9c2012347acd49b230ecc382f741a, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -1725064484948535962, guid: d5dae4924103acf429608ffb85aced3e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -563,7 +567,6 @@ GameObject:
   - component: {fileID: 1370259786}
   - component: {fileID: 1370259785}
   - component: {fileID: 1370259788}
-  - component: {fileID: 1370259789}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -689,18 +692,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &1370259789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1370259784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da04d06141c3e7e42b686b5ef02af6d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1491767678
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ public class CameraBounds : MonoBehaviour
         EdgeCollider2D leftColliderQuarter = edgeColliders.AddComponent<EdgeCollider2D>();
         Vector2[] leftPointQuarter = new Vector2[2];
         leftPointQuarter[0]= new Vector2(bottomLeft.x, bottomLeft.y + (topLeft.y - bottomLeft.y) / 4 * 3);
-        leftPointQuarter[2] = topLeft;
+        leftPointQuarter[1] = topLeft;
         leftColliderQuarter.points = leftPointQuarter;
 
         // Crear colisionador para el borde lateral derecho
