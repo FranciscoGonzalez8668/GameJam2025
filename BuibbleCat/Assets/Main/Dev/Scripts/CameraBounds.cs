@@ -32,7 +32,10 @@ public class CameraBounds : MonoBehaviour
         bottomPoints[0] = bottomLeft;
         bottomPoints[1] = bottomRight;
         bottomCollider.points = bottomPoints;
+<<<<<<< HEAD
         bottomCollider.tag = "BottomEdge"; // Asignar etiqueta para identificar el borde inferior
+=======
+>>>>>>> da351db34f68224466edbf7a06229e0623b77dfe
 
         // Crear colisionador para el borde lateral izquierdo (tercio inferior)
         EdgeCollider2D leftCollider = edgeColliders.AddComponent<EdgeCollider2D>();
