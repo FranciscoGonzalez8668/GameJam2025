@@ -11,8 +11,15 @@ public class Bubble : MonoBehaviour
         set
         {
             available = value;
-            if (available) ToolsController.ChangeTool.Invoke(0);
-            else ToolsController.ChangeTool.Invoke(1);
+            if (available)
+            {
+                ToolsController.ChangeTool.Invoke(0);
+                spriteObj.SetActive(false);
+            }
+            else
+            {
+                spriteObj.SetActive(true);
+            }
         }
     }
     [SerializeField] GameObject spriteObj;
@@ -25,18 +32,22 @@ public class Bubble : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        Available = true;
+        spriteObj.SetActive(false);
+    }
+
     public void ShootBubble(Vector2 pos, float force)
     {
         Available = false;
         transform.position = pos;
-        spriteObj.gameObject.SetActive(true);
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
     }
 
     private void DestroyBubble()
     {
-        spriteObj.gameObject.SetActive(false);
         Available = true;
 
         if (containedDirt) containedDirt.EnableDirt();
@@ -44,12 +55,11 @@ public class Bubble : MonoBehaviour
 
     public void CollisionWithDirt(Dirt dirt)
     {
-        if (Available) return;
-
         containedDirt = dirt;
         dirt.DisableDirt(transform);
         StartCoroutine(HitDirt());
         Invulnerability();
+        ToolsController.ChangeTool.Invoke(1);
     }
 
     public void Invulnerability() => StartCoroutine(InvulnerabilityCoroutine());
@@ -80,6 +90,7 @@ public class Bubble : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (Available) return;
         if (other.CompareTag("Window"))
         {
             DestroyBubble();
@@ -93,6 +104,7 @@ public class Bubble : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        if (Available) return;
         if (other.TryGetComponent<Fan>(out Fan fan))
         {
             float distance = Vector2.Distance(transform.position, fan.transform.position);
