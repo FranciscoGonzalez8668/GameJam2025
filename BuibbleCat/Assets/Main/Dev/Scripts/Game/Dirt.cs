@@ -5,10 +5,13 @@ public class Dirt : MonoBehaviour
 {
     [SerializeField] float minForce, maxForce;
     [SerializeField] Vector2 direction;
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip collisionBubbleClip;
+    [SerializeField] SpriteSelector spriteSelector;
     Rigidbody2D rb;
 
+    public int GetSprite()
+    {
+        return spriteSelector.selectedSpriteInt;
+    }
     private void Awake()
     {
         rb = GetComponentInParent<Rigidbody2D>();
@@ -24,12 +27,6 @@ public class Dirt : MonoBehaviour
     {
         if (other.TryGetComponent<Bubble>(out Bubble bubble))
         {
-            //Reproducir Sonido colision
-            if (audioSource != null && collisionBubbleClip != null)
-            {
-                audioSource.PlayOneShot(collisionBubbleClip);
-            }
-
             bubble.CollisionWithDirt(this);
         }
         if (other.CompareTag("BottomEdge"))
@@ -59,7 +56,7 @@ public class Dirt : MonoBehaviour
 
     private void OnDestroy()
     {
-        DirtGenerator.CreateDirt.Invoke();
+        // DirtGenerator.CreateDirt.Invoke();
         GameManager.instance.RestTry();
     }
 }

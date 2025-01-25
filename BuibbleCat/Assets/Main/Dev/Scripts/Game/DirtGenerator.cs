@@ -4,12 +4,12 @@ using UnityEngine.PlayerLoop;
 
 public class DirtGenerator : MonoBehaviour
 {
-    // [SerializeField] float timeBetweenDirt;
+    [SerializeField] float timeBetweenDirt;
     [SerializeField] Collider2D spawnZone;
     [SerializeField] GameObject dirtPrefab;
     [SerializeField] Animator catAnimator;
     SoundsSender soundsSender;
-    float actualTime;
+    float actualTime = 0;
     bool start;
 
     public static System.Action CreateDirt;
@@ -22,7 +22,7 @@ public class DirtGenerator : MonoBehaviour
     {
         soundsSender = GetComponent<SoundsSender>();
         // ResetTimer();
-        SpawnDirt();
+        // SpawnDirt();
     }
 
     [ContextMenu("Enable")]
@@ -41,15 +41,15 @@ public class DirtGenerator : MonoBehaviour
         }
         else
         {
-            // ResetTimer();
+            ResetTimer();
             SpawnDirt();
         }
     }
 
-    // private void ResetTimer()
-    // {
-    //     actualTime = timeBetweenDirt;
-    // }
+    private void ResetTimer()
+    {
+        actualTime = timeBetweenDirt;
+    }
 
     private void SpawnDirt()
     {
