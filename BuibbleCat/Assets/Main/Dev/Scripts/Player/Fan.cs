@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class Fan : MonoBehaviour
 {
-
-
+    [SerializeField] BoxCollider2D fanZoneColl;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip fanClip;
     public float fanPower;
@@ -32,9 +31,13 @@ public class Fan : MonoBehaviour
 
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, new Vector3(1, range, 1));
-    }
+    // private void OnDrawGizmos()
+    // {
+    //     Gizmos.color = Color.red;
+    //     Vector2 from = transform.position;
+    //     from.y -= range;
+    //     Vector2 to = from;
+    //     to.y += range;
+    //     Gizmos.DrawLine(from, to);
+    // }
 }
