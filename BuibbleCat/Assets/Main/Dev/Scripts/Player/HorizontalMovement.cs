@@ -5,9 +5,14 @@ public class HorizontalMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public float velocidad = 5f;
+    public float dashForce = 80f;
+    public float dashDuration= 0.5f;
+    private bool isDashing = false;
+    private float dashTime;
+
 
     private Rigidbody2D rb;
-SoundsSender soundsSender;
+    SoundsSender soundsSender;
 private void Awake() {
     soundsSender = GetComponent<SoundsSender>();
 }
@@ -37,6 +42,17 @@ private void Awake() {
     void Update()
     {
 
+        if (isDashing)
+        {
+            dashTime -= Time.deltaTime;
+            if (dashTime <= 0)
+            {
+                isDashing = false;
+                rb.linearVelocity = Vector2.zero;
+            }
+            return;
+        }
+
         float movimientoHorizontal = Input.GetAxis("Horizontal");
         //float movimientoVertical = Input.GetAxis("Vertical");
         Vector2 velocidadDeseada = new Vector2(movimientoHorizontal * velocidad, rb.linearVelocityY);
@@ -49,7 +65,21 @@ private void Awake() {
             rb.linearVelocity = velocidadDeseada;
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift) && movimientoHorizontal != 0 && !isDashing)
+        {
+            Dash(movimientoHorizontal);
+        }
+
     }
 
     void PlayStepSound()=> soundsSender.Play("step");
+
+    private void Dash(float direction) 
+    {
+        isDashing= true;
+        dashTime = dashDuration;
+        Vector2 dashVelocity = new Vector2(direction * dashForce, 0);
+        rb.linearVelocity = dashVelocity;
+    }
+
 }

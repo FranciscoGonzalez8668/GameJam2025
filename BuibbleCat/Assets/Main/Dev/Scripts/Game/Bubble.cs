@@ -4,7 +4,7 @@ using UnityEngine;
 public class Bubble : MonoBehaviour
 {
     [HideInInspector] public bool available = true;
-    [SerializeField] public float bounceForce = 8f;
+    [SerializeField] public float bounceForce = 5f;
     public bool Available
     {
         get { return available; }
@@ -106,6 +106,12 @@ public class Bubble : MonoBehaviour
         else if (other.CompareTag("RightEdge"))
         {
             Vector2 bounceDirection = Vector2.left;
+            rb.AddForce(bounceDirection * bounceForce, ForceMode2D.Impulse);
+            return;
+        }
+        else if (other.CompareTag("LeftEdge"))
+        {
+            Vector2 bounceDirection = Vector2.right;
             rb.AddForce(bounceDirection * bounceForce, ForceMode2D.Impulse);
             return;
         }
