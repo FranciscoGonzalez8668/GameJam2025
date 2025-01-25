@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
     public static GameManager instance;
     [SerializeField] int tries;
     int points;
@@ -13,7 +14,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         //Configuracion del audio ambiental
         if (ambientAudioSource != null && ambientClip != null)

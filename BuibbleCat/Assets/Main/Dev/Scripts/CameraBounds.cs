@@ -32,20 +32,47 @@ public class CameraBounds : MonoBehaviour
         bottomPoints[0] = bottomLeft;
         bottomPoints[1] = bottomRight;
         bottomCollider.points = bottomPoints;
+        bottomCollider.tag = "BottomEdge"; // Asignar etiqueta para identificar el borde inferior
 
-        // Crear colisionador para el borde lateral izquierdo (tercio inferior)
-        EdgeCollider2D leftCollider = edgeColliders.AddComponent<EdgeCollider2D>();
+        // Crear colisionador para el borde lateral izquierdo (mitad inferior)
+        EdgeCollider2D leftColliderHalf = edgeColliders.AddComponent<EdgeCollider2D>();
         Vector2[] leftPoints = new Vector2[2];
         leftPoints[0] = bottomLeft;
-        leftPoints[1] = new Vector2(bottomLeft.x, bottomLeft.y + (topLeft.y - bottomLeft.y) / 3);
-        leftCollider.points = leftPoints;
+        leftPoints[1] = new Vector2(bottomLeft.x, bottomLeft.y + (topLeft.y - bottomLeft.y) / 4*2);
+        leftColliderHalf.points = leftPoints;
 
-        // Crear colisionador para el borde lateral derecho (tercio inferior)
+        //Crear Colisionador para el borde lateral izquierdo (cuarto superior)
+        EdgeCollider2D leftColliderQuarter = edgeColliders.AddComponent<EdgeCollider2D>();
+        Vector2[] leftPointQuarter = new Vector2[2];
+        leftPointQuarter[0]= new Vector2(bottomLeft.x, bottomLeft.y + (topLeft.y - bottomLeft.y) / 4 * 3);
+        leftPointQuarter[2] = topLeft;
+        leftColliderQuarter.points = leftPointQuarter;
+
+        // Crear colisionador para el borde lateral derecho
         EdgeCollider2D rightCollider = edgeColliders.AddComponent<EdgeCollider2D>();
         Vector2[] rightPoints = new Vector2[2];
         rightPoints[0] = bottomRight;
-        rightPoints[1] = new Vector2(bottomRight.x, bottomRight.y + (topRight.y - bottomRight.y) / 3);
+        rightPoints[1] = topRight;
         rightCollider.points = rightPoints;
+        
+        //Crear colisionador para el borde superior
+        EdgeCollider2D topCollider = edgeColliders.AddComponent<EdgeCollider2D>();
+        Vector2[] topPoints = new Vector2[2];
+        topPoints[0] = topLeft;
+        topPoints[1] = topRight;
+        topCollider.points = topPoints;
+        topCollider.tag = "TopEdge"; // Asignar etiqueta para identificar el borde superior
+
+        //Crear colisionador para la ventana
+        EdgeCollider2D windowCollider = edgeColliders.AddComponent<EdgeCollider2D>();
+        Vector2[] windowPoint = new Vector2[4];
+        windowPoint[0] = new Vector2(bottomLeft.x, bottomLeft.y + (topLeft.y - bottomLeft.y) / 4 * 2);
+        windowPoint[1] = new Vector2(bottomLeft.x-1, bottomLeft.y + (topLeft.y - bottomLeft.y) / 4 * 2);
+        windowPoint[2] = new Vector2(bottomLeft.x - 1, bottomLeft.y + (topLeft.y - bottomLeft.y) / 4 * 3);
+        windowPoint[3] = new Vector2(bottomLeft.x, bottomLeft.y + (topLeft.y - bottomLeft.y) / 4 * 3);
+        windowCollider.points = windowPoint;
+        windowCollider.tag = "Window"; // Asignar etiqueta para identificar la ventana
+    
     }
 
     private void OnDrawGizmos()
@@ -61,12 +88,30 @@ public class CameraBounds : MonoBehaviour
 
             // Dibujar los bordes de la cámara
             Gizmos.color = Color.red;
-            // Borde inferior
+            // Borde inferior 
             Gizmos.DrawLine(bottomLeft, bottomRight);
-            // Borde lateral izquierdo (tercio inferior)
-            Gizmos.DrawLine(bottomLeft, new Vector2(bottomLeft.x, bottomLeft.y + (topLeft.y - bottomLeft.y) / 3));
+            // Borde lateral izquierdo (mitad inferior)
+            Gizmos.DrawLine(bottomLeft, new Vector2(bottomLeft.x, bottomLeft.y + (topLeft.y - bottomLeft.y) / 4*2));
+            //Borde lateral izquierdo (cuarto superior)
+            Gizmos.DrawLine(new Vector2(bottomLeft.x, bottomLeft.y + (topLeft.y - bottomLeft.y) / 4 * 3), topLeft);
             // Borde lateral derecho (tercio inferior)
-            Gizmos.DrawLine(bottomRight, new Vector2(bottomRight.x, bottomRight.y + (topRight.y - bottomRight.y) / 3));
+            Gizmos.DrawLine(bottomRight, topRight);
+
+            // Borde superior
+            Gizmos.DrawLine(topLeft, topRight);
+
+            // Ventana
+            Gizmos.color = Color.blue;
+            Vector2 windowBottomRight = new Vector2(bottomLeft.x, bottomLeft.y + (topLeft.y - bottomLeft.y) / 4 * 2);
+            Vector2 windowBottomLeft = new Vector2(bottomLeft.x - 1, bottomLeft.y + (topLeft.y - bottomLeft.y) / 4 * 2);
+            Vector2 windowTopLeft = new Vector2(bottomLeft.x - 1, bottomLeft.y + (topLeft.y - bottomLeft.y) / 4 * 3);
+            Vector2 windowTopRight = new Vector2(bottomLeft.x, bottomLeft.y + (topLeft.y - bottomLeft.y) / 4 * 3);
+
+            Gizmos.DrawLine(windowBottomRight, windowBottomLeft);
+            Gizmos.DrawLine(windowBottomLeft, windowTopLeft);
+            Gizmos.DrawLine(windowTopLeft, windowTopRight);
+
+
         }
 #endif
     }

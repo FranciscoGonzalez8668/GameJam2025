@@ -27,9 +27,10 @@ public class Dirt : MonoBehaviour
 
             bubble.CollisionWithDirt(this);
         }
-        else
+        else if (other.CompareTag("BottomEdge"))
         {
-            Debug.Log("Dirt collision with: " + other.name);
+            //Incrementar el contador en el GameManager
+            GameManager.instance.RestTry();
         }
     }
 

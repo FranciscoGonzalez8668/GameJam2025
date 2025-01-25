@@ -6,6 +6,8 @@ public class DirtGenerator : MonoBehaviour
     [SerializeField] float timeBetweenDirt;
     [SerializeField] Collider2D spawnZone;
     [SerializeField] GameObject dirtPrefab;
+
+    [SerializeField] AudioSource audioSource;
     float actualTime;
     bool start;
 
@@ -48,6 +50,10 @@ public class DirtGenerator : MonoBehaviour
 
     private void SpawnDirt()
     {
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
         GameObject newDirt = Instantiate(dirtPrefab, GetRandomPosition(), Quaternion.identity, transform);
     }
 
