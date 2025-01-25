@@ -58,6 +58,16 @@ public class AudioManager : MonoBehaviour
         }
         audioMixer.SetFloat(AudioType.SFXVolume.ToString(), Mathf.Log10(volume) * 20); // Convierte a escala logarítmica
     }
+
+    public void SetMasterVolume(float volume)
+    {
+        if (volume == 0)
+        {
+            audioMixer.SetFloat(AudioType.MasterVolume.ToString(), -80);
+            return;
+        }
+        audioMixer.SetFloat(AudioType.MasterVolume.ToString(), Mathf.Log10(volume) * 20);//Convierte a escala logarítmica
+    }
     #endregion
 
     #region Reproducción de Sonido
