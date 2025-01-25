@@ -9,6 +9,18 @@ public class Bubble : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public void ShootBubble(Vector2 pos, float force)
+    {
+        transform.position = pos;
+        rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+    }
+
+    private void DestroyBubble()
+    {
+        DirtGenerator.CreateDirt.Invoke();
+        gameObject.SetActive(false);
+    }
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.TryGetComponent<Fan>(out Fan fan))

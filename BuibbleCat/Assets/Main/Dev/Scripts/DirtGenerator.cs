@@ -8,6 +8,13 @@ public class DirtGenerator : MonoBehaviour
     [SerializeField] GameObject dirtPrefab;
     float actualTime;
     bool start;
+
+    public static System.Action CreateDirt;
+    private void OnEnable()
+    {
+        CreateDirt += SpawnDirt;
+    }
+
     private void Awake()
     {
         ResetTimer();
@@ -18,7 +25,7 @@ public class DirtGenerator : MonoBehaviour
 
     [ContextMenu("Disable")]
     public void DisableSpawner() => start = false;
-    
+
     private void Update()
     {
         if (!start) return;
