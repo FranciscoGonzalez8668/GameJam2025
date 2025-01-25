@@ -7,8 +7,7 @@ public class DirtGenerator : MonoBehaviour
     [SerializeField] Collider2D spawnZone;
     [SerializeField] GameObject dirtPrefab;
 
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip[] audioClips;
+    SoundsSender soundsSender;
     float actualTime;
     bool start;
 
@@ -20,6 +19,7 @@ public class DirtGenerator : MonoBehaviour
 
     private void Awake()
     {
+        soundsSender = GetComponent<SoundsSender>();
         ResetTimer();
     }
 
@@ -51,13 +51,7 @@ public class DirtGenerator : MonoBehaviour
 
     private void SpawnDirt()
     {
-        if (audioSource != null)
-        {
-            //Seleccionar un clip de audio al azar
-            AudioClip randomClip = audioClips[Random.Range(0, audioClips.Length)];
-            audioSource.clip = randomClip;
-            audioSource.Play();
-        }
+        PlaySpawnSound();
         GameObject newDirt = Instantiate(dirtPrefab, GetRandomPosition(), Quaternion.identity, transform);
     }
 
@@ -68,4 +62,7 @@ public class DirtGenerator : MonoBehaviour
         float randomY = Random.Range(bounds.min.y, bounds.max.y);
         return new Vector2(randomX, randomY);
     }
+
+    void PlaySpawnSound() => soundsSender.Play("create");
+
 }

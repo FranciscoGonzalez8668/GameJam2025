@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 6316510037497329734}
   - component: {fileID: 5548536630296338720}
   - component: {fileID: 2853879611302062564}
+  - component: {fileID: 3298960830917101176}
   - component: {fileID: 6422562962810097874}
   m_Layer: 0
   m_Name: Player
@@ -220,6 +221,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d51052f7baf12844ab71ed17db667e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3298960830917101176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932742190214419056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d782213d0ad214946916e1d692af2d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundsToSend:
+  - id: fanButton
+    clips:
+    - {fileID: 8300000, guid: c29bdb425102a794a9b2e18024167669, type: 3}
+    - {fileID: 8300000, guid: 0daf32905140aff40b888e132bdaf9c4, type: 3}
+    - {fileID: 8300000, guid: 27b6cd05c6c401844bb08d304ea36707, type: 3}
+  - id: bubbleGun
+    clips:
+    - {fileID: 8300000, guid: c29bdb425102a794a9b2e18024167669, type: 3}
+    - {fileID: 8300000, guid: 0daf32905140aff40b888e132bdaf9c4, type: 3}
+    - {fileID: 8300000, guid: 27b6cd05c6c401844bb08d304ea36707, type: 3}
+  - id: step
+    clips: []
 --- !u!50 &6422562962810097874
 Rigidbody2D:
   serializedVersion: 5
@@ -285,11 +311,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3395486628175964706, guid: efee70166a8a36341ad4213a25e7c5e9, type: 3}
       propertyPath: range
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3395486628175964706, guid: efee70166a8a36341ad4213a25e7c5e9, type: 3}
       propertyPath: fanPower
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3395486628175964706, guid: efee70166a8a36341ad4213a25e7c5e9, type: 3}
       propertyPath: fanZoneColl

@@ -7,7 +7,10 @@ public class HorizontalMovement : MonoBehaviour
     public float velocidad = 5f;
 
     private Rigidbody2D rb;
-
+SoundsSender soundsSender;
+private void Awake() {
+    soundsSender = GetComponent<SoundsSender>();
+}
     void Start()
     {
         try
@@ -47,4 +50,6 @@ public class HorizontalMovement : MonoBehaviour
         }
 
     }
+
+    void PlayStepSound()=> soundsSender.Play("step");
 }

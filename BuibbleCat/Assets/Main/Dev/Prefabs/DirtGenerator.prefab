@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2355516902648316703}
   - component: {fileID: 6229321178577223673}
+  - component: {fileID: 6921818881282713227}
   m_Layer: 0
   m_Name: DirtGenerator
   m_TagString: Untagged
@@ -126,3 +127,21 @@ MonoBehaviour:
   timeBetweenDirt: 5
   spawnZone: {fileID: 885871742742837977}
   dirtPrefab: {fileID: 8389036536945720126, guid: 1fbcf1dca1422dc43b738afc00a90703, type: 3}
+--- !u!114 &6921818881282713227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4665807326504291890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d782213d0ad214946916e1d692af2d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundsToSend:
+  - id: create
+    clips:
+    - {fileID: 8300000, guid: df7c4b0fdf83ac14fa35d98d6d1ede85, type: 3}
+    - {fileID: 8300000, guid: b36f929391c1dfb43b287a8b374cc7e9, type: 3}
+    - {fileID: 8300000, guid: 356ce14db9179074e9df34d14abfc84c, type: 3}
