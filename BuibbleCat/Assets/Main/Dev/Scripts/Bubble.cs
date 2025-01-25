@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class Bubble : MonoBehaviour
@@ -17,6 +18,7 @@ public class Bubble : MonoBehaviour
 
     private void DestroyBubble()
     {
+        this.gameObject.SetActive(false);
         DirtGenerator.CreateDirt.Invoke();
         gameObject.SetActive(false);
     }

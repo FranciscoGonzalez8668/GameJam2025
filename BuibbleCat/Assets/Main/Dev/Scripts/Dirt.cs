@@ -29,9 +29,10 @@ public class Dirt : MonoBehaviour
             transform.parent = other.transform;
             rb.bodyType = RigidbodyType2D.Kinematic;
         }
-        else
+        else if (other.CompareTag("BottomEdge"))
         {
-            Debug.Log("Dirt collision with: " + other.name);
+            //Incrementar el contador en el GameManager
+            GameManager.instance.RestTry();
         }
         
     }
