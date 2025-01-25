@@ -50,7 +50,11 @@ public class MenuMananger : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.ExitPlaymode();
+        #else
+            Application.Quit();
+        #endif
     }
 
 }
