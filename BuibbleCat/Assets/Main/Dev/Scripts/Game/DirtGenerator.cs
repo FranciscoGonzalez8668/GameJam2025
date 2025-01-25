@@ -8,6 +8,7 @@ public class DirtGenerator : MonoBehaviour
     [SerializeField] GameObject dirtPrefab;
 
     [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip[] audioClips;
     float actualTime;
     bool start;
 
@@ -52,6 +53,9 @@ public class DirtGenerator : MonoBehaviour
     {
         if (audioSource != null)
         {
+            //Seleccionar un clip de audio al azar
+            AudioClip randomClip = audioClips[Random.Range(0, audioClips.Length)];
+            audioSource.clip = randomClip;
             audioSource.Play();
         }
         GameObject newDirt = Instantiate(dirtPrefab, GetRandomPosition(), Quaternion.identity, transform);
