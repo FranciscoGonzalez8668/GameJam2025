@@ -17,5 +17,6 @@ public class Dirt : MonoBehaviour
     {
         transform.position = other.transform.position;
         transform.parent = other.transform;
+        rb.bodyType = RigidbodyType2D.Kinematic;
     }
 }
