@@ -123,6 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c7d4c6b99ff3e4ca934729ff12bfd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenDirt: 1
+  timeBetweenDirt: 5
   spawnZone: {fileID: 885871742742837977}
   dirtPrefab: {fileID: 8389036536945720126, guid: 1fbcf1dca1422dc43b738afc00a90703, type: 3}

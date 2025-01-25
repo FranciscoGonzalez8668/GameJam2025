@@ -80,6 +80,12 @@ public class Bubble : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("Window"))
+        {
+            DestroyBubble();
+            GameManager.instance.AddPoint();
+            return;
+        }
         if (isInvulnerable || other.CompareTag("bubbleSafe")) return;
 
         DestroyBubble();
@@ -90,7 +96,7 @@ public class Bubble : MonoBehaviour
         if (other.TryGetComponent<Fan>(out Fan fan))
         {
             float distance = Vector2.Distance(transform.position, fan.transform.position);
-            float force = fan.fanPower * ((fan.range - distance) < 0 ? 0 : fan.range - distance);
+            float force = fan.fanPower * ((fan.range - distance) < 0 ? 0.5f : fan.range - distance);
 
             Vector2 toOther = (other.transform.position - transform.position).normalized;
             float dot = Vector2.Dot(other.transform.up, toOther);
