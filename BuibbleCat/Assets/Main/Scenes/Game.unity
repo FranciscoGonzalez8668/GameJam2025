@@ -714,7 +714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4194124387379797827, guid: 09a9c2012347acd49b230ecc382f741a, type: 3}
       propertyPath: tries
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4194124387379797827, guid: 09a9c2012347acd49b230ecc382f741a, type: 3}
       propertyPath: ambientClip
