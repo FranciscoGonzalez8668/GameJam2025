@@ -60,7 +60,7 @@ public class HorizontalMovement : MonoBehaviour
         Vector2 velocidadDeseada = new Vector2(movimientoHorizontal * velocidad, rb.linearVelocityY);
 
         animator.SetFloat("Walk", movimientoHorizontal == 0 ? 0 : 1);
-        spriteRenderer.flipX = movimientoHorizontal > 0 ? false : true;
+        if (movimientoHorizontal != 0) spriteRenderer.flipX = movimientoHorizontal > 0 ? false : true;
         rb.linearVelocity = velocidadDeseada;
 
         if (rb != null)
