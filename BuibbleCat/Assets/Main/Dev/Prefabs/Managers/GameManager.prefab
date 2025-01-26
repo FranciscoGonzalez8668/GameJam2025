@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a37c7aa824fd7469ff7ef6188f3d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tries: 0
+  tries: 1
   ambientAudioSource: {fileID: 8427855252795140360}
-  ambientClip: {fileID: 0}
+  ambientClip: {fileID: 8300000, guid: 45180069a55f9944e93a5af044252223, type: 3}
 --- !u!114 &-1707124665489917948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,8 +71,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1725064484948535962, guid: d5dae4924103acf429608ffb85aced3e, type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 45180069a55f9944e93a5af044252223, type: 3}
+  m_Resource: {fileID: 8300000, guid: 45180069a55f9944e93a5af044252223, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

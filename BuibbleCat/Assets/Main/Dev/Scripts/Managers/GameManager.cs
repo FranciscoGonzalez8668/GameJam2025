@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -11,9 +12,6 @@ public class GameManager : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField] AudioSource ambientAudioSource;
     [SerializeField] AudioClip ambientClip;
-
-    [Header("UI settings")]
-    [SerializeField] Canvas loseCanvas;
 
     private void Awake()
     {
@@ -34,6 +32,7 @@ public class GameManager : MonoBehaviour
             ambientAudioSource.loop = true;
             ambientAudioSource.Play();
         }
+
     }
 
     public void AddPoint()
@@ -58,17 +57,27 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("GAME OVER");
 
-        //Mostar el Canvas de perder
-        if (loseCanvas != null)
-        {
-            loseCanvas.gameObject.SetActive(true);
+        //Show loose UI 
 
-        }
+        UIManager.instance.showGameOverPanel();
+        //Pausar la musica
+        ambientAudioSource.Pause();
 
-            // SHOW LOSE UI
-        }
+        //Pausar Generador de tierra
+        DirtGenerator.OnChangeStartState.Invoke(false);
 
-        public void RestartGame()
+    }
+
+    public void QuitGame()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.ExitPlaymode();
+        #else
+            Application.Quit();
+        #endif
+    }
+
+    public void RestartGame()
     {
         SceneManager.LoadScene(0);
     }

@@ -11,11 +11,13 @@ public class DirtGenerator : MonoBehaviour
     SoundsSender soundsSender;
     float actualTime = 0;
     bool start;
+    Coroutine DirtGeneratorCorutine;
 
-    public static System.Action CreateDirt;
+
+    public static System.Action<bool> OnChangeStartState;
     private void OnEnable()
     {
-        CreateDirt += SpawnDirt;
+        OnChangeStartState += SpawnDirt;
     }
 
     private void Awake()
@@ -46,7 +48,7 @@ public class DirtGenerator : MonoBehaviour
         else
         {
             ResetTimer();
-            SpawnDirt();
+            SpawnDirt(true);
         }
     }
 
@@ -55,11 +57,24 @@ public class DirtGenerator : MonoBehaviour
         actualTime = timeBetweenDirt;
     }
 
-    private void SpawnDirt()
+    private void SpawnDirt(bool startCorutine)
     {
-        StartCoroutine(CatScratch());
-    }
+        
+        if (startCorutine )
+        {
 
+            if(DirtGeneratorCorutine == null) DirtGeneratorCorutine = StartCoroutine(CatScratch());
+
+
+        }
+        else
+        {
+            if (DirtGeneratorCorutine != null) StopCoroutine(DirtGeneratorCorutine);
+            DirtGeneratorCorutine = null;
+
+        }
+
+    }
     IEnumerator CatScratch()
     {
         catAnimator.SetBool("scratch", true);

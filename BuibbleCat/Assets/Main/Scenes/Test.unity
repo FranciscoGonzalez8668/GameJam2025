@@ -406,19 +406,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7593005480297652023, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
-      propertyPath: m_text
+    - target: {fileID: 2380372859007430410, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8290355963622142334, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
-      propertyPath: m_text
+    - target: {fileID: 8661961076600793410, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8791148957367596028, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8661961076600793410, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -617,8 +618,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4194124387379797827, guid: 09a9c2012347acd49b230ecc382f741a, type: 3}
       propertyPath: tries
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4194124387379797827, guid: 09a9c2012347acd49b230ecc382f741a, type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 2004695917}
     - target: {fileID: 4194124387379797827, guid: 09a9c2012347acd49b230ecc382f741a, type: 3}
       propertyPath: ambientClip
       value: 
@@ -1102,6 +1107,14 @@ PrefabInstance:
       propertyPath: triestTxt
       value: 
       objectReference: {fileID: 2026204142}
+    - target: {fileID: 1882979059007253358, guid: 9a2f728deb961594b92f95046454d486, type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 2004695917}
+    - target: {fileID: 1882979059007253358, guid: 9a2f728deb961594b92f95046454d486, type: 3}
+      propertyPath: gameOverPanel
+      value: 
+      objectReference: {fileID: 1926974729}
     - target: {fileID: 3166037073382490071, guid: 9a2f728deb961594b92f95046454d486, type: 3}
       propertyPath: m_Name
       value: UIManager
@@ -1151,6 +1164,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a2f728deb961594b92f95046454d486, type: 3}
+--- !u!1 &1926974729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2380372859007430410, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
+  m_PrefabInstance: {fileID: 201240785}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1933240999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1219,6 +1237,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!223 &2004695917 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 394665810521611830, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
+  m_PrefabInstance: {fileID: 201240785}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2026204142 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7593005480297652023, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
