@@ -6,6 +6,7 @@ public class ToolsController : MonoBehaviour
     [SerializeField] GameObject bubbleGun, fan;
     SoundsSender soundsSender;
     public static System.Action<int> ChangeTool;
+    private bool isFanActive = false;
 
     bool tool=true;
     // private void OnEnable()
@@ -23,7 +24,15 @@ private void Update() {
         fan.SetActive(false);
     }
 
-    private void SwitchTool()
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ToggleFan();
+        }
+    }
+
+    private void SwitchTool(int tool)
     {
         tool=!tool;
         
@@ -35,6 +44,7 @@ private void Update() {
         if (tool)
         {
             PlayFanBtnSound();
+            isFanActive = true;
         }
 
         bubbleGun.SetActive(tool);
@@ -43,6 +53,14 @@ private void Update() {
 
     }
 
+    public void ToggleFan()
+    {
+        isFanActive = !isFanActive;
+        fan.SetActive(isFanActive);
+        PlayFanBtnSound();
+    }
+
     void PlayFanBtnSound() => soundsSender.Play("fanButton");
     void PlayBubbleGunSound() => soundsSender.Play("bubbleGun");
+
 }
