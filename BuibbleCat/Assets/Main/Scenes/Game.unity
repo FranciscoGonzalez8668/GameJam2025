@@ -326,6 +326,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 111955998917515501, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 111955998917515501, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 111955998917515501, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 111955998917515501, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1775094347549116864, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -406,6 +422,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4644703077379118915, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4644703077379118915, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4644703077379118915, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4644703077379118915, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8791148957367596028, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -415,6 +447,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
+--- !u!1 &201240786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2380372859007430410, guid: 0abda87bf3d655b4f9a4aaa047e5fecb, type: 3}
+  m_PrefabInstance: {fileID: 201240785}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &244005422
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +720,10 @@ PrefabInstance:
       propertyPath: ambientClip
       value: 
       objectReference: {fileID: 8300000, guid: 45180069a55f9944e93a5af044252223, type: 3}
+    - target: {fileID: 4194124387379797827, guid: 09a9c2012347acd49b230ecc382f741a, type: 3}
+      propertyPath: gameOverSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: d29168a4d38679b449579c274fca7ad5, type: 3}
     - target: {fileID: 4900022946179643539, guid: 09a9c2012347acd49b230ecc382f741a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1165,7 +1206,7 @@ PrefabInstance:
     - target: {fileID: 1882979059007253358, guid: 9a2f728deb961594b92f95046454d486, type: 3}
       propertyPath: gameOverPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 201240786}
     - target: {fileID: 3166037073382490071, guid: 9a2f728deb961594b92f95046454d486, type: 3}
       propertyPath: m_Name
       value: UIManager

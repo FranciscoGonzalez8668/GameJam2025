@@ -6,12 +6,20 @@ public class Fan : MonoBehaviour
     public float fanPower;
     public float range;
 
-    SoundsSender soundsSender;
+    AudioSource audioSource;
     private void Awake()
     {
-        soundsSender = GetComponent<SoundsSender>();
+        audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayFanOnSound() => soundsSender.Play("On");
-    public void PlayFanOffSound() => soundsSender.Play("Off");
+    private void OnEnable()
+    {
+        audioSource.loop = true;
+        audioSource.Play();
+    }
+    private void OnDisable()
+    {
+        audioSource.Stop();
+    }
+
 }

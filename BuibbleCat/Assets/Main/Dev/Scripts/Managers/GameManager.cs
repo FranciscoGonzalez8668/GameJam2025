@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Audio Settings")]
     [SerializeField] AudioSource ambientAudioSource;
-    [SerializeField] AudioClip ambientClip;
+    [SerializeField] AudioClip ambientClip, gameOverSFX;
 
     private void Awake()
     {
@@ -32,7 +32,10 @@ public class GameManager : MonoBehaviour
             ambientAudioSource.loop = true;
             ambientAudioSource.Play();
         }
-
+    }
+    private void Start()
+    {
+        UIManager.instance.UpdateTriesTxt(tries);
     }
 
     public void AddPoint()
@@ -55,7 +58,7 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
-
+        AudioManager.Instance.PlaySFX(gameOverSFX);
         Debug.Log("GAME OVER");
 
         //Show loose UI 
@@ -80,7 +83,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Game");
     }
 
     public void SetAmbientVolume(float volume)

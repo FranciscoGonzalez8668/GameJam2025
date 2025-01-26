@@ -49,6 +49,7 @@ MonoBehaviour:
   tries: 1
   ambientAudioSource: {fileID: 8427855252795140360}
   ambientClip: {fileID: 8300000, guid: 45180069a55f9944e93a5af044252223, type: 3}
+  gameOverSFX: {fileID: 0}
 --- !u!114 &-1707124665489917948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,7 +77,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
