@@ -7,14 +7,15 @@ public class Dirt : MonoBehaviour
     [SerializeField] Vector2 direction;
     [SerializeField] SpriteSelector spriteSelector;
     Rigidbody2D rb;
-
+    Collider2D myCollider;
     public int GetSprite()
     {
         return spriteSelector.selectedSpriteInt;
     }
     private void Awake()
     {
-        rb = GetComponentInParent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        myCollider = GetComponent<Collider2D>();
         float force = Random.Range(minForce, maxForce);
         rb.AddForce(direction * force, ForceMode2D.Impulse);
     }
@@ -43,13 +44,15 @@ public class Dirt : MonoBehaviour
         }
     }
 
-    public void PushDirt(Vector2 direction, float force){
+    public void PushDirt(Vector2 direction, float force)
+    {
 
         rb.AddForce(direction * force, ForceMode2D.Impulse);
 
     }
     public void EnableDirt()
     {
+        myCollider.enabled = true;
         rb.bodyType = RigidbodyType2D.Dynamic;
         transform.SetParent(null);
     }
@@ -57,6 +60,7 @@ public class Dirt : MonoBehaviour
     public void DisableDirt(Transform bubbleParent)
     {
         rb.bodyType = RigidbodyType2D.Kinematic;
+        myCollider.enabled = false;
         transform.position = bubbleParent.transform.position;
         transform.parent = bubbleParent.transform;
     }

@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 856064382143522595}
   m_Layer: 8
   m_Name: Bubble
-  m_TagString: Untagged
+  m_TagString: bubbleSafe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,7 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4719855be61a22346b7cc9b73826041f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  available: 1
   bounceForce: 5
   spriteObj: {fileID: 2112725858166093505}
   lerpTimeOnHitDirt: 0.65
