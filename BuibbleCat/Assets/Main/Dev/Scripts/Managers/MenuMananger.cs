@@ -24,7 +24,11 @@ public class MenuMananger : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("Game");
+#       if UNITY_EDITOR
+            SceneManager.LoadScene("Test");
+        #else
+            SceneManager.LoadScene("Game");
+        #endif  
     }
 
     public void OpenOptions()
