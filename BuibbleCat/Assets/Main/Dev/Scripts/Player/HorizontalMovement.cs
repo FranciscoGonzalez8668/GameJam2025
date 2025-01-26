@@ -3,30 +3,32 @@ using UnityEngine;
 public class HorizontalMovement : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
+    [SerializeField] Animator animator;
+    [SerializeField] SpriteRenderer spriteRenderer;
     public float velocidad = 5f;
     public float dashForce = 80f;
-    public float dashDuration= 0.5f;
+    public float dashDuration = 0.5f;
     private bool isDashing = false;
     private float dashTime;
 
 
     private Rigidbody2D rb;
     SoundsSender soundsSender;
-private void Awake() {
-    soundsSender = GetComponent<SoundsSender>();
-}
+    private void Awake()
+    {
+        soundsSender = GetComponent<SoundsSender>();
+    }
     void Start()
     {
         try
         {
             rb = GetComponent<Rigidbody2D>();
         }
-        catch(System.Exception ex)
+        catch (System.Exception ex)
         {
             Debug.LogError("Error al obtener el componente Rigidbody2D: " + ex.Message);
         }
-        
+
 
         if (rb != null)
         {
@@ -56,9 +58,10 @@ private void Awake() {
         float movimientoHorizontal = Input.GetAxis("Horizontal");
         //float movimientoVertical = Input.GetAxis("Vertical");
         Vector2 velocidadDeseada = new Vector2(movimientoHorizontal * velocidad, rb.linearVelocityY);
-        
-        
-        rb.linearVelocity= velocidadDeseada;
+
+        animator.SetFloat("Walk", movimientoHorizontal == 0 ? 0 : 1);
+        spriteRenderer.flipX = movimientoHorizontal > 0 ? false : true;
+        rb.linearVelocity = velocidadDeseada;
 
         if (rb != null)
         {
@@ -72,11 +75,11 @@ private void Awake() {
 
     }
 
-    void PlayStepSound()=> soundsSender.Play("step");
+    void PlayStepSound() => soundsSender.Play("step");
 
-    private void Dash(float direction) 
+    private void Dash(float direction)
     {
-        isDashing= true;
+        isDashing = true;
         dashTime = dashDuration;
         Vector2 dashVelocity = new Vector2(direction * dashForce, 0);
         rb.linearVelocity = dashVelocity;
