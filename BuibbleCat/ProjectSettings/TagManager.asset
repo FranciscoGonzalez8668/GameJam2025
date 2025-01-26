@@ -9,6 +9,9 @@ TagManager:
   - BottomEdge
   - Point
   - Border
+  - RightEdge
+  - LeftEdge
+  - TopEdge
   layers:
   - Default
   - TransparentFX
