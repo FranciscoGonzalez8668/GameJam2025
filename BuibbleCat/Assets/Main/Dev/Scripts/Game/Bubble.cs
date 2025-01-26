@@ -1,4 +1,5 @@
 using System.Collections;
+using System.ComponentModel;
 using UnityEngine;
 
 public class Bubble : MonoBehaviour
@@ -77,7 +78,7 @@ public class Bubble : MonoBehaviour
         dirt.DisableDirt(transform);
         StartCoroutine(HitDirt());
         Invulnerability();
-        ToolsController.ChangeTool.Invoke(1);
+        // ToolsController.ChangeTool.Invoke(1);
     }
 
     public void Invulnerability() => StartCoroutine(InvulnerabilityCoroutine());
@@ -122,12 +123,15 @@ public class Bubble : MonoBehaviour
         }
         else if (other.CompareTag("RightEdge"))
         {
+            containedDirt.EnableDirt();
             Vector2 bounceDirection = Vector2.left;
-            rb.AddForce(bounceDirection * bounceForce, ForceMode2D.Impulse);
+            containedDirt.PushDirt(bounceDirection,bounceForce);
+            
         }else if (other.CompareTag("LeftEdge"))
         {
+            containedDirt.EnableDirt();
             Vector2 bounceDirection = Vector2.right;
-            rb.AddForce(bounceDirection * bounceForce, ForceMode2D.Impulse);
+            containedDirt.PushDirt(bounceDirection,bounceForce);
         }
 
         if (isInvulnerable || other.CompareTag("bubbleSafe")) return;

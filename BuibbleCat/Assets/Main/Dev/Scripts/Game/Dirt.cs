@@ -36,6 +36,11 @@ public class Dirt : MonoBehaviour
         }
     }
 
+    public void PushDirt(Vector2 direction, float force){
+
+        rb.AddForce(direction * force, ForceMode2D.Impulse);
+
+    }
     public void EnableDirt()
     {
         rb.bodyType = RigidbodyType2D.Dynamic;

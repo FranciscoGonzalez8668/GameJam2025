@@ -14,9 +14,6 @@ public class ToolsController : MonoBehaviour
     //     ChangeTool += SwitchTool;
     // }
 
-private void Update() {
-    if(Input.GetKeyDown(KeyCode.Q))SwitchTool();
-}
     private void Awake()
     {
         soundsSender = GetComponent<SoundsSender>();
@@ -28,11 +25,14 @@ private void Update() {
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ToggleFan();
+            if(!tool){
+                ToggleFan();
+            }
         }
+        if(Input.GetKeyDown(KeyCode.Q))SwitchTool();
     }
 
-    private void SwitchTool(int tool)
+    private void SwitchTool()
     {
         tool=!tool;
         
@@ -41,7 +41,7 @@ private void Update() {
             PlayBubbleGunSound();
         }
         
-        if (tool)
+        if (!tool)
         {
             PlayFanBtnSound();
             isFanActive = true;
