@@ -27,7 +27,8 @@ public class DirtGenerator : MonoBehaviour
         // SpawnDirt();
 
     }
-    private void Start() {
+    private void Start()
+    {
         start = true;
     }
 
@@ -59,19 +60,17 @@ public class DirtGenerator : MonoBehaviour
 
     private void SpawnDirt(bool startCorutine)
     {
-        
-        if (startCorutine )
+        start = startCorutine;
+
+        if (startCorutine)
         {
-
-            if(DirtGeneratorCorutine == null) DirtGeneratorCorutine = StartCoroutine(CatScratch());
-
-
+            if (DirtGeneratorCorutine == null) DirtGeneratorCorutine = StartCoroutine(CatScratch());
         }
         else
         {
             if (DirtGeneratorCorutine != null) StopCoroutine(DirtGeneratorCorutine);
             DirtGeneratorCorutine = null;
-
+            Debug.Log("Stopping coroutine");
         }
 
     }
@@ -83,6 +82,7 @@ public class DirtGenerator : MonoBehaviour
         GameObject newDirt = Instantiate(dirtPrefab, GetRandomPosition(), Quaternion.identity, transform);
         yield return new WaitForSeconds(0.7f);
         catAnimator.SetBool("scratch", false);
+        DirtGeneratorCorutine = null;
     }
 
     private Vector2 GetRandomPosition()

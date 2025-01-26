@@ -44,12 +44,13 @@ public class GameManager : MonoBehaviour
     public void RestTry()
     {
         tries--;
-        UIManager.instance.UpdateTriesTxt(tries);
-        
+
         if (tries <= 0)
         {
+            tries = 0;
             EndGame();
         }
+        UIManager.instance.UpdateTriesTxt(tries);
     }
 
     private void EndGame()
@@ -70,11 +71,11 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.ExitPlaymode();
-        #else
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.ExitPlaymode();
+#else
             Application.Quit();
-        #endif
+#endif
     }
 
     public void RestartGame()

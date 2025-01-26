@@ -12,6 +12,7 @@ TagManager:
   - RightEdge
   - LeftEdge
   - TopEdge
+  - Bubble
   layers:
   - Default
   - TransparentFX
