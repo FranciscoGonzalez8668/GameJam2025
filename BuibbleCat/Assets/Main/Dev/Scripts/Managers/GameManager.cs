@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioSource ambientAudioSource;
     [SerializeField] AudioClip ambientClip;
 
+    [Header("UI settings")]
+    [SerializeField] Canvas loseCanvas;
+
     private void Awake()
     {
         if (instance == null)
@@ -54,10 +57,18 @@ public class GameManager : MonoBehaviour
     {
 
         Debug.Log("GAME OVER");
-        // SHOW LOSE UI
-    }
 
-    public void RestartGame()
+        //Mostar el Canvas de perder
+        if (loseCanvas != null)
+        {
+            loseCanvas.gameObject.SetActive(true);
+
+        }
+
+            // SHOW LOSE UI
+        }
+
+        public void RestartGame()
     {
         SceneManager.LoadScene(0);
     }
