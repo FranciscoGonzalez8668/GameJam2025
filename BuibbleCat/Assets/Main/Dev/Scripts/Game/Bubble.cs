@@ -13,7 +13,7 @@ public class Bubble : MonoBehaviour
             available = value;
             if (available)
             {
-                ToolsController.ChangeTool.Invoke(0);
+                // ToolsController.ChangeTool.Invoke(0);
                 spriteObj.SetActive(false);
             }
             else
@@ -45,6 +45,9 @@ public class Bubble : MonoBehaviour
         Available = true;
         spriteObj.SetActive(false);
     }
+    private void Update() {
+        rb.gravityScale = containedDirt? 0.65f:0.25f;
+    }
 
     public void ShootBubble(Vector2 pos, float force)
     {
@@ -59,11 +62,16 @@ public class Bubble : MonoBehaviour
     {
         PlayPopSound();
         Available = true;
-        if (containedDirt) containedDirt.EnableDirt();
+        if (containedDirt)
+        {
+            containedDirt.EnableDirt();
+            containedDirt = null;
+        }
     }
 
     public void CollisionWithDirt(Dirt dirt)
     {
+        if (containedDirt) return;
         PlayCapturedSound();
         containedDirt = dirt;
         dirt.DisableDirt(transform);

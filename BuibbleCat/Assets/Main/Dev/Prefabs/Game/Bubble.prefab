@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   available: 1
+  bounceForce: 5
   spriteObj: {fileID: 2112725858166093505}
   lerpTimeOnHitDirt: 0.65
   invulnerabilityTimeOnHitDirt: 1
@@ -201,13 +202,13 @@ MonoBehaviour:
   soundsToSend:
   - id: shoot
     clips:
-    - {fileID: 8300000, guid: 7b61f0c2660796943bcc8176cb595705, type: 3}
+    - {fileID: 8300000, guid: 32195a4a18a4bf6469c69992a0264865, type: 3}
   - id: captured
     clips:
-    - {fileID: 8300000, guid: eedd6268b986f2f4e81f21fec9d2b388, type: 3}
+    - {fileID: 8300000, guid: 0f1dff426e061b14bb79203aebc51bee, type: 3}
   - id: pop
     clips:
-    - {fileID: 8300000, guid: 7ee4fc6d174f3f349a5b54649eaba0d4, type: 3}
+    - {fileID: 8300000, guid: 0ddc5d0b8309e7d45902b473e5d4e096, type: 3}
 --- !u!58 &856064382143522595
 CircleCollider2D:
   m_ObjectHideFlags: 0

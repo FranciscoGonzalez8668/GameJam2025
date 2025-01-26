@@ -23,6 +23,10 @@ public class DirtGenerator : MonoBehaviour
         soundsSender = GetComponent<SoundsSender>();
         // ResetTimer();
         // SpawnDirt();
+
+    }
+    private void Start() {
+        start = true;
     }
 
     [ContextMenu("Enable")]
