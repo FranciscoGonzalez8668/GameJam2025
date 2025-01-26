@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
+
+        Debug.Log("GAME OVER");
         // SHOW LOSE UI
     }
 

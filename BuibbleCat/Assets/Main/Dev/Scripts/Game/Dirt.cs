@@ -21,7 +21,12 @@ public class Dirt : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.y < -25) DestroyDirt();
+        if (transform.position.y < -25)
+        {
+            GameManager.instance.RestTry();
+            DestroyDirt();
+
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -31,7 +36,9 @@ public class Dirt : MonoBehaviour
         }
         if (other.CompareTag("BottomEdge"))
         {
+            Debug.Log("COLLIDER CON BOTTOM EDGE");
             //Incrementar el contador en el GameManager
+            GameManager.instance.RestTry();
             DestroyDirt();
         }
     }
@@ -62,6 +69,6 @@ public class Dirt : MonoBehaviour
     private void OnDestroy()
     {
         // DirtGenerator.CreateDirt.Invoke();
-        GameManager.instance.RestTry();
+        //GameManager.instance.RestTry();
     }
 }

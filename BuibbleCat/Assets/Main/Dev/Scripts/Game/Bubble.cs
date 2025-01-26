@@ -44,7 +44,7 @@ public class Bubble : MonoBehaviour
     private void Start()
     {
         Available = true;
-        spriteObj.SetActive(false);
+        spriteObj.SetActive(true);
     }
     private void Update() {
         rb.gravityScale = containedDirt? 0.65f:0.25f;
@@ -53,7 +53,7 @@ public class Bubble : MonoBehaviour
     public void ShootBubble(Vector2 pos, float force)
     {
         PlayShootSound();
-        Available = false;
+        Available = true;
         transform.position = pos;
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
