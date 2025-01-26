@@ -2,22 +2,28 @@ using UnityEngine;
 
 public class BubbleGun : MonoBehaviour
 {
-    [SerializeField] Bubble bubble;
     [SerializeField] private GameObject bubblePrefab;
     [SerializeField] float shootForce;
+    [SerializeField] float shootInterval;
+
+    private float actualShootInterval;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (actualShootInterval > 0)
         {
+            actualShootInterval -= Time.deltaTime;
+        }
 
+        if (Input.GetKeyDown(KeyCode.Space) && actualShootInterval <= 0)
+        {
             ShootBubble();
-            //bubble.ShootBubble(transform.position, shootForce);
         }
     }
 
     private void ShootBubble()
     {
-        GameObject newBubble = Instantiate(bubblePrefab, transform.position,Quaternion.identity);
+        actualShootInterval = shootInterval;
+        GameObject newBubble = Instantiate(bubblePrefab, transform.position, Quaternion.identity, null);
         Bubble bubbleComponent = newBubble.GetComponent<Bubble>();
         if (bubbleComponent != null)
         {

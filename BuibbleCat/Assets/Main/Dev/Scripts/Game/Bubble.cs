@@ -4,25 +4,7 @@ using UnityEngine;
 
 public class Bubble : MonoBehaviour
 {
-    [HideInInspector] public bool available = true;
     [SerializeField] public float bounceForce = 5f;
-    public bool Available
-    {
-        get { return available; }
-        set
-        {
-            available = value;
-            if (available)
-            {
-                // ToolsController.ChangeTool.Invoke(0);
-                spriteObj.SetActive(false);
-            }
-            else
-            {
-                spriteObj.SetActive(true);
-            }
-        }
-    }
     [SerializeField] GameObject spriteObj;
     [SerializeField] float lerpTimeOnHitDirt, invulnerabilityTimeOnHitDirt;
     [SerializeField] SpriteSelector spriteSelector;
@@ -40,20 +22,14 @@ public class Bubble : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         soundsSender = GetComponent<SoundsSender>();
     }
-
-    private void Start()
+    private void Update()
     {
-        Available = true;
-        spriteObj.SetActive(true);
-    }
-    private void Update() {
-        rb.gravityScale = containedDirt? 0.65f:0.25f;
+        rb.gravityScale = containedDirt ? 0.65f : 0.25f;
     }
 
     public void ShootBubble(Vector2 pos, float force)
     {
         PlayShootSound();
-        Available = true;
         transform.position = pos;
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
@@ -62,12 +38,12 @@ public class Bubble : MonoBehaviour
     private void DestroyBubble()
     {
         PlayPopSound();
-        Available = true;
         if (containedDirt)
         {
             containedDirt.EnableDirt();
             containedDirt = null;
         }
+        Destroy(gameObject);
     }
 
     public void CollisionWithDirt(Dirt dirt)
@@ -78,7 +54,6 @@ public class Bubble : MonoBehaviour
         dirt.DisableDirt(transform);
         StartCoroutine(HitDirt());
         Invulnerability();
-        // ToolsController.ChangeTool.Invoke(1);
     }
 
     public void Invulnerability() => StartCoroutine(InvulnerabilityCoroutine());
@@ -109,39 +84,53 @@ public class Bubble : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (Available) return;
-        if (other.CompareTag("Point") && containedDirt)
+        Vector2 bounceDirection = Vector2.right;
+        switch (other.tag)
         {
-            FakeBubble fakeBubble = other.GetComponentInParent<FakeBubble>();
-            fakeBubble.GenerateFakeBubble(transform.position, GetSprite(), containedDirt.GetSprite());
+            case "RightEdge":
+                bounceDirection = Vector2.left;
+                BounceDirt(bounceDirection);
+                break;
+            case "LeftEdge":
+                bounceDirection = Vector2.right;
+                BounceDirt(bounceDirection);
+                break;
+            case "Point":
+                if (containedDirt)
+                {
+                    FakeBubble fakeBubble = other.GetComponentInParent<FakeBubble>();
+                    fakeBubble.GenerateFakeBubble(transform.position, GetSprite(), containedDirt.GetSprite());
 
-            Destroy(containedDirt.gameObject);
-            DestroyBubble();
+                    Destroy(containedDirt.gameObject);
+                    DestroyBubble();
 
-            GameManager.instance.AddPoint();
+                    GameManager.instance.AddPoint();
+                    return;
+                }
+                break;
+        }
+
+        if (isInvulnerable || other.CompareTag("bubbleSafe"))
+        {
+            Vector2 direction = (transform.position - other.transform.position).normalized;
+            rb.AddForce(direction * bounceForce, ForceMode2D.Impulse);
             return;
         }
-        else if (other.CompareTag("RightEdge"))
-        {
-            containedDirt.EnableDirt();
-            Vector2 bounceDirection = Vector2.left;
-            containedDirt.PushDirt(bounceDirection,bounceForce);
-            
-        }else if (other.CompareTag("LeftEdge"))
-        {
-            containedDirt.EnableDirt();
-            Vector2 bounceDirection = Vector2.right;
-            containedDirt.PushDirt(bounceDirection,bounceForce);
-        }
-
-        if (isInvulnerable || other.CompareTag("bubbleSafe")) return;
 
         DestroyBubble();
+    }
+    
+    private void BounceDirt(Vector2 direction)
+    {
+        if (containedDirt)
+        {
+            containedDirt.EnableDirt();
+            containedDirt.PushDirt(direction, bounceForce);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (Available) return;
         if (other.TryGetComponent<Fan>(out Fan fan))
         {
             float distance = Vector2.Distance(transform.position, fan.transform.position);
